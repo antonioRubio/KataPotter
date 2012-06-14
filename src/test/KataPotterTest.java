@@ -2,21 +2,43 @@ package test;
 
 import static org.junit.Assert.*;
 
+import main.CostCalculator;
 import main.KataPotter;
+import main.KataPotterCostCalculator;
+import main.Order;
+import main.OrderRepository;
+import main.OrderRepositoryMongo;
 
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class KataPotterTest {
 	
+	private KataPotter kataPotter;
+	
+	@BeforeClass
+	public static void setUpClass() {
+		OrderRepository repository = new OrderRepositoryMongo();
+		repository.clearRepository();
+		
+	}
+	
+	@Before
+	public void setUp() {
+		kataPotter = new KataPotter();
+		CostCalculator costCalculator = new KataPotterCostCalculator();
+		kataPotter.setCostCalulator(costCalculator);
+	}
+	
 	@Test
 	public void buyNoBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		assertEquals(0.0, kataPotter.getTotalCost(), 0.0);
 	}
 
 	@Test
 	public void buyOneFirstBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		assertEquals(8.0, kataPotter.getTotalCost(), 0.0);
@@ -24,7 +46,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buyOneSecondBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies);
 		assertEquals(8.0, kataPotter.getTotalCost(), 0.0);
@@ -32,14 +53,12 @@ public class KataPotterTest {
 	
 	@Test
 	public void buyTwoFirstBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 2;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		assertEquals(16.0, kataPotter.getTotalCost(), 0.0);
 	}
 	@Test
 	public void buyTwoSecondBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 2;
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies);
 		assertEquals(16.0, kataPotter.getTotalCost(), 0.0);
@@ -47,7 +66,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buyTwoFirstDifferentAddToCartBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
@@ -56,7 +74,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buyTwoDifferentBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies);
@@ -65,7 +82,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buyThreeDifferentBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies);
@@ -75,7 +91,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buySevenDifferentBookTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies);
@@ -89,7 +104,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buySevenDifferentBookAndOneRepeatedTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies);
@@ -104,7 +118,6 @@ public class KataPotterTest {
 	
 	@Test
 	public void buySevenDifferentBookAndTwoRepeatedTest() {
-		KataPotter kataPotter = new KataPotter();
 		int numCopies = 1;
 		kataPotter.addToCart(KataPotter.book.FIRST, numCopies + 1);
 		kataPotter.addToCart(KataPotter.book.SECOND, numCopies + 1);
@@ -114,5 +127,52 @@ public class KataPotterTest {
 		kataPotter.addToCart(KataPotter.book.SIXTH, numCopies);
 		kataPotter.addToCart(KataPotter.book.SEVENTH, numCopies);
 		assertEquals(46.0, kataPotter.getTotalCost(), 0.1);
+	}
+	
+	@Test
+	public void buySevenDifferentBookAndTwoRepeatedSetBooksTest() {
+		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
+		kataPotter.addToCart(bookCopies);
+		assertArrayEquals(bookCopies, kataPotter.getBooksInCartArray());
+	}
+	
+	@Test
+	public void buySevenDifferentBookAndTwoRepeatedSetBooksPriceTest() {
+		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
+		kataPotter.addToCart(bookCopies);
+		assertEquals(46.0, kataPotter.getTotalCost(), 0.1);
+	}
+	
+	@Test
+	public void buySevenDifferentBookAndTwoRepeatedGetBooksTest() {
+		int numCopies = 1;
+		kataPotter.addToCart(KataPotter.book.FIRST, numCopies + 1);
+		kataPotter.addToCart(KataPotter.book.SECOND, numCopies + 1);
+		kataPotter.addToCart(KataPotter.book.THIRD, numCopies);
+		kataPotter.addToCart(KataPotter.book.FOURTH, numCopies);
+		kataPotter.addToCart(KataPotter.book.FIFTH, numCopies);
+		kataPotter.addToCart(KataPotter.book.SIXTH, numCopies);
+		kataPotter.addToCart(KataPotter.book.SEVENTH, numCopies);
+		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
+		assertArrayEquals(bookCopies, kataPotter.getBooksInCartArray());
+	}
+	
+	@Test
+	public void orderRepositoryTest() {
+		OrderRepository repository = new OrderRepositoryMongo();
+		String name = "Julian";
+		String direction = "123 Sesame Street";
+		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
+		kataPotter.addToCart(bookCopies);
+		Order order = kataPotter.generateOrder(name, direction);
+		repository.saveOrder(order);
+		assertEquals(46.0, kataPotter.getTotalCost(), 0.1);
+	}
+	
+	@AfterClass
+	public static void tearDownClass() {
+		OrderRepository repository = new OrderRepositoryMongo();
+		repository.clearRepository();
+		
 	}
 }

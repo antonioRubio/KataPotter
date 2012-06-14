@@ -1,12 +1,8 @@
 package main;
 
-import java.util.Arrays;
-
 public class KataPotter {
-	private static final double COST_PER_BOOK = 8.0;
-	
 	private int[] booksBuyed;
-	private double[] discount = {0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.45};
+	private CostCalculator costCalculator;
 	
 	public static enum book {
 		FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH
@@ -21,41 +17,33 @@ public class KataPotter {
 		int positionBookNumber = bookNumber.ordinal();
 		booksBuyed[positionBookNumber] += numCopies;
 	}
+	
+	public void addToCart(int[] bookCopies) {
+		for (int positionBookNumber = 0; positionBookNumber < bookCopies.length; 
+				positionBookNumber++) {
+			booksBuyed[positionBookNumber] += bookCopies[positionBookNumber];
+		}
+	}
 
 	public double getTotalCost() {
-		double cost = 0.0;
-		int[] copyOfOrderedBooksBuyed = getCopyOfOrderedBooksBuyed();
-		for (int position = 0; position < copyOfOrderedBooksBuyed.length; position++) {
-			if (copyOfOrderedBooksBuyed[position] == 0) continue;
-			cost += getAccumulatedCost(copyOfOrderedBooksBuyed, position);
-			substractQuantityOfBooks(copyOfOrderedBooksBuyed, position);
-		}
-		return cost;
+		costCalculator.setElementsBuyed(booksBuyed);
+		return costCalculator.getCost();
 	}
 	
-	private double getAccumulatedCost(int[] booksQuantity, int position) {
-		int numOfDifferentBooks = booksQuantity.length - position;
-		int quantity = booksQuantity[position];
-		int discountPosition = numOfDifferentBooks - 1;
-		double booksDiscount = numOfDifferentBooks * getDiscount(discountPosition);
-		return quantity * booksDiscount * COST_PER_BOOK;
-	}
-
-	private double getDiscount(int discountPosition) {
-		return 1 - discount[discountPosition];
-	}
-
-	private void substractQuantityOfBooks(int[] booksQuantity, int partialPosition) {
-		int quantity = booksQuantity[partialPosition];
-		for (int position = partialPosition; position < booksQuantity.length; position++)
-			booksQuantity[position] -= quantity;
-	}
-
-	private int[] getCopyOfOrderedBooksBuyed() {
-		int[] copyOfOrderedBooksBuyed = booksBuyed.clone();
-		Arrays.sort(copyOfOrderedBooksBuyed);
-		return copyOfOrderedBooksBuyed;
+	public int[] getBooksInCartArray() {
+		return booksBuyed;
 	}
 	
+	public void setCostCalulator(CostCalculator costCalculator) {
+		this.costCalculator = costCalculator;
+	}
 	
+	public Order generateOrder(String name, String direction) {
+		Order order = new Order();
+		order.setName(name);
+		order.setDirection(direction);
+		order.setPrice(getTotalCost());
+		order.setBookCopies(booksBuyed);
+		return order;
+	}
 }
