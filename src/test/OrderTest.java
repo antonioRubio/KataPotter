@@ -19,7 +19,7 @@ public class OrderTest {
 	@Test
 	public void nameTest() {
 		Order order = new Order();
-		String name = "123 Sesame street";
+		String name = "Pepito";
 		order.setName(name);
 		assertEquals(name, order.getName());
 	}
@@ -38,6 +38,21 @@ public class OrderTest {
 		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
 		order.setBookCopies(bookCopies);
 		assertArrayEquals(bookCopies, order.getBookCopies());
+	}
+	
+	@Test
+	public void toJSONTest() {
+		Order order = new Order();
+		String direction = "123 Sesame street";
+		String name = "Pepito";
+		double price = 1.23;
+		order.setPrice(price);
+		order.setName(name);
+		int[] bookCopies = new int[] {2, 2, 1, 1, 1, 1, 1};
+		order.setDirection(direction);
+		order.setBookCopies(bookCopies);
+		String result = "{\"direction\":\"123 Sesame street\",\"name\":\"Pepito\",\"price\":1.23,\"bookCopies\":[2,2,1,1,1,1,1]}";
+		assertEquals(result, order.toJSON());
 	}
 
 }

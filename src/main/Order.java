@@ -1,5 +1,12 @@
 package main;
 
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 public class Order {
 	private String direction;
 	private String name;
@@ -37,5 +44,19 @@ public class Order {
 	public int[] getBookCopies() {
 		return bookCopies;
 	}
-
+	
+	public String toJSON() {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonStringOrder = null;
+		try {
+			jsonStringOrder = mapper.writeValueAsString(this);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return jsonStringOrder;
+	}
 }
