@@ -2,6 +2,8 @@ package org.antonio.katapotter;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +14,8 @@ public class Order {
 	private String name;
 	private double price;
 	private int[] bookCopies;
+	
+	private Logger logger = Logger.getLogger(Order.class);
 
 	public void setDirection(String direction) {
 		this.direction = direction;
@@ -38,7 +42,7 @@ public class Order {
 	}
 
 	public void setBookCopies(int[] bookCopies) {
-		this.bookCopies = bookCopies.clone();
+		this.bookCopies = bookCopies;
 	}
 
 	public int[] getBookCopies() {
@@ -51,11 +55,11 @@ public class Order {
 		try {
 			jsonStringOrder = mapper.writeValueAsString(this);
 		} catch (JsonGenerationException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (JsonMappingException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return jsonStringOrder;
 	}

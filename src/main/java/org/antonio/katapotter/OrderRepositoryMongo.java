@@ -5,6 +5,8 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +19,8 @@ import com.mongodb.MongoException;
 import com.mongodb.util.JSON;
 
 public class OrderRepositoryMongo implements OrderRepository {
-	DBCollection orderCollection;
+	private DBCollection orderCollection;
+	private Logger logger = Logger.getLogger(OrderRepositoryMongo.class);
 	
 	public OrderRepositoryMongo() {
 		try {
@@ -43,13 +46,13 @@ public class OrderRepositoryMongo implements OrderRepository {
 				order = mapper.readValue(jsonObject, Order.class);
 				orders.add(order);
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			} catch (MongoException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 			
 		}
