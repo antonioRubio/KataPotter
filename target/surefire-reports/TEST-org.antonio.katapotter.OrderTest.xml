@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.222" errors="0" skipped="0" tests="5" name="org.antonio.katapotter.OrderTest">
+<testsuite failures="0" time="0.407" errors="0" skipped="0" tests="5" name="org.antonio.katapotter.OrderTest">
   <properties>
+    <property name="http.agent" value="Sonar"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64"/>
     <property name="java.vm.version" value="20.0-b12"/>
@@ -23,13 +24,14 @@
 "/>
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="os.name" value="Linux"/>
+    <property name="net.sourceforge.cobertura.datafile" value="/home/administrador/workspace/KataPotter/target/cobertura/cobertura.ser"/>
     <property name="classworlds.conf" value="/usr/share/maven2/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64:/usr/lib/jvm/java-6-openjdk-amd64/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="3.2.0-1-amd64"/>
+    <property name="os.version" value="3.2.0-2-amd64"/>
     <property name="user.home" value="/home/administrador"/>
     <property name="user.timezone" value="Europe/Madrid"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
@@ -40,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-6-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;test&quot;"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;install&quot; &quot;sonar:sonar&quot;"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="es"/>
     <property name="java.vm.info" value="mixed mode"/>
@@ -54,11 +56,12 @@
     <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="project.build.outputDirectory" value="/home/administrador/workspace/KataPotter/target/generated-classes/cobertura"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.004" classname="org.antonio.katapotter.OrderTest" name="addressTest"/>
+  <testcase time="0.015" classname="org.antonio.katapotter.OrderTest" name="addressTest"/>
   <testcase time="0" classname="org.antonio.katapotter.OrderTest" name="nameTest"/>
   <testcase time="0" classname="org.antonio.katapotter.OrderTest" name="priceTest"/>
-  <testcase time="0" classname="org.antonio.katapotter.OrderTest" name="booksTest"/>
-  <testcase time="0.179" classname="org.antonio.katapotter.OrderTest" name="toJSONTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.OrderTest" name="booksTest"/>
+  <testcase time="0.337" classname="org.antonio.katapotter.OrderTest" name="toJSONTest"/>
 </testsuite>
