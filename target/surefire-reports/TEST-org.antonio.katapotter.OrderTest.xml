@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.407" errors="0" skipped="0" tests="5" name="org.antonio.katapotter.OrderTest">
+<testsuite failures="0" time="0.261" errors="0" skipped="0" tests="5" name="org.antonio.katapotter.OrderTest">
   <properties>
     <property name="http.agent" value="Sonar"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -59,9 +59,9 @@
     <property name="project.build.outputDirectory" value="/home/administrador/workspace/KataPotter/target/generated-classes/cobertura"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.015" classname="org.antonio.katapotter.OrderTest" name="addressTest"/>
+  <testcase time="0.049" classname="org.antonio.katapotter.OrderTest" name="addressTest"/>
   <testcase time="0" classname="org.antonio.katapotter.OrderTest" name="nameTest"/>
   <testcase time="0" classname="org.antonio.katapotter.OrderTest" name="priceTest"/>
   <testcase time="0.001" classname="org.antonio.katapotter.OrderTest" name="booksTest"/>
-  <testcase time="0.337" classname="org.antonio.katapotter.OrderTest" name="toJSONTest"/>
+  <testcase time="0.173" classname="org.antonio.katapotter.OrderTest" name="toJSONTest"/>
 </testsuite>

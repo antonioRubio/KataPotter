@@ -42,7 +42,7 @@ public class Order {
 	}
 
 	public void setBookCopies(int[] bookCopies) {
-		this.bookCopies = bookCopies;
+		this.bookCopies = bookCopies.clone();
 	}
 
 	public int[] getBookCopies() {

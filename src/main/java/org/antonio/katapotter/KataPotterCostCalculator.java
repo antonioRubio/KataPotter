@@ -16,7 +16,9 @@ public class KataPotterCostCalculator implements CostCalculator {
 		double cost = 0.0;
 		int[] copyOfOrderedElementsBuyed = getCopyOfOrderedElementsBuyed();
 		for (int position = 0; position < copyOfOrderedElementsBuyed.length; position++) {
-			if (copyOfOrderedElementsBuyed[position] == 0) continue;
+			if (copyOfOrderedElementsBuyed[position] == 0) {
+				continue;
+			}
 			cost += getAccumulatedCost(copyOfOrderedElementsBuyed, position);
 			substractQuantityOfElements(copyOfOrderedElementsBuyed, position);
 		}
@@ -44,8 +46,9 @@ public class KataPotterCostCalculator implements CostCalculator {
 	
 	private void substractQuantityOfElements(int[] elementsQuantity, int partialPosition) {
 		int quantity = elementsQuantity[partialPosition];
-		for (int position = partialPosition; position < elementsQuantity.length; position++)
+		for (int position = partialPosition; position < elementsQuantity.length; position++) {
 			elementsQuantity[position] -= quantity;
+		}
 	}
 	
 	

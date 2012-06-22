@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.antonio</groupId>
   <artifactId>katapotter</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
   <name>katapotter</name>
   <url>http://maven.apache.org</url>
   <build>
@@ -26,7 +26,7 @@
       </testResource>
     </testResources>
     <directory>/home/administrador/workspace/KataPotter/target</directory>
-    <finalName>katapotter-0.0.1-SNAPSHOT</finalName>
+    <finalName>katapotter-0.1.1-SNAPSHOT</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -195,6 +195,12 @@
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
       <version>1.3</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

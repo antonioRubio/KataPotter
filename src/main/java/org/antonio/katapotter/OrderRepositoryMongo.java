@@ -28,9 +28,9 @@ public class OrderRepositoryMongo implements OrderRepository {
 			DB dataBase = mongoConnection.getDB("orderDB");
 			orderCollection = dataBase.getCollection("order");
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (MongoException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 

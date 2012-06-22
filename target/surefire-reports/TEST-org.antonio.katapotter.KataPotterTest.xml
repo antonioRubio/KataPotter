@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.02" errors="0" skipped="0" tests="15" name="org.antonio.katapotter.KataPotterTest">
+<testsuite failures="0" time="0.026" errors="0" skipped="0" tests="15" name="org.antonio.katapotter.KataPotterTest">
   <properties>
     <property name="http.agent" value="Sonar"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -59,19 +59,19 @@
     <property name="project.build.outputDirectory" value="/home/administrador/workspace/KataPotter/target/generated-classes/cobertura"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.002" classname="org.antonio.katapotter.KataPotterTest" name="buyNoBookTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyOneFirstBookTest"/>
-  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyOneSecondBookTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoFirstBookTest"/>
-  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoSecondBookTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyNoBookTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyOneFirstBookTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyOneSecondBookTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoFirstBookTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoSecondBookTest"/>
   <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoFirstDifferentAddToCartBookTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoDifferentBookTest"/>
-  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyThreeDifferentBookTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndOneRepeatedTest"/>
-  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buyTwoDifferentBookTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buyThreeDifferentBookTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndOneRepeatedTest"/>
+  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedTest"/>
   <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedSetBooksTest"/>
-  <testcase time="0.001" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedSetBooksPriceTest"/>
+  <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedSetBooksPriceTest"/>
   <testcase time="0" classname="org.antonio.katapotter.KataPotterTest" name="buySevenDifferentBookAndTwoRepeatedGetBooksTest"/>
-  <testcase time="0.002" classname="org.antonio.katapotter.KataPotterTest" name="orderRepositoryTest"/>
+  <testcase time="0.004" classname="org.antonio.katapotter.KataPotterTest" name="orderRepositoryTest"/>
 </testsuite>
